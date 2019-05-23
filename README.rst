@@ -40,7 +40,7 @@ This version of Apache Libcloud features the following modifications:
   allow the user to launch an instance with the Advanced Monitoring enabled.
 * **[OpenStack]** create_node now supports the optional parameter ex_scheduler_hints (dict),
   allowing the user to provide detailed informations to the OpenStack scheduler and using
-  the [OpenStack REST API](https://developer.openstack.org/api-ref/compute/?expanded=create-server-detail).
+  the (OpenStack REST API)[https://developer.openstack.org/api-ref/compute/?expanded=create-server-detail].
 
 Feedback
 ========
