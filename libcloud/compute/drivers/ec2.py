@@ -1807,6 +1807,9 @@ class BaseEC2NodeDriver(NodeDriver):
         :keyword    ex_keyname: The name of the key pair
         :type       ex_keyname: ``str``
 
+        :keyword    ex_monitoring: Detailed monitoring enabled if True
+        :type       ex_monitoring: ``bool``
+
         :keyword    ex_userdata: User data
         :type       ex_userdata: ``str``
 
@@ -1872,6 +1875,9 @@ class BaseEC2NodeDriver(NodeDriver):
             'MaxCount': str(kwargs.get('ex_maxcount', '1')),
             'InstanceType': size.id
         }
+
+        if kwargs.get("ex_monitoring", False):
+            params['Monitoring.Enabled'] = True
 
         if kwargs.get("ex_terminate_on_shutdown", False):
             params["InstanceInitiatedShutdownBehavior"] = "terminate"

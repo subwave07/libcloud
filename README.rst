@@ -1,33 +1,9 @@
-Apache Libcloud - a unified interface for the cloud
-====================================================
+Apache Libcloud (Mod) - a unified interface for the cloud
+=========================================================
 
 Apache Libcloud is a Python library which hides differences between different
 cloud provider APIs and allows you to manage different cloud resources
 through a unified and easy to use API.
-
-.. image:: https://img.shields.io/badge/docs-latest-brightgreen.svg?style=flat
-    :target: https://libcloud.readthedocs.org
-
-.. image:: https://img.shields.io/pypi/v/apache-libcloud.svg
-    :target: https://pypi.python.org/pypi/apache-libcloud/
-
-.. image:: https://img.shields.io/travis/apache/libcloud/trunk.svg
-        :target: http://travis-ci.org/apache/libcloud
-
-.. image:: https://img.shields.io/codecov/c/github/apache/libcloud/trunk.svg
-        :target: https://codecov.io/github/apache/libcloud?branch=trunk
-
-.. image:: https://img.shields.io/pypi/pyversions/apache-libcloud.svg
-        :target: https://pypi.python.org/pypi/apache-libcloud/
-
-.. image:: https://img.shields.io/pypi/wheel/apache-libcloud.svg
-        :target: https://pypi.python.org/pypi/apache-libcloud/
-
-.. image:: https://img.shields.io/github/license/apache/libcloud.svg
-        :target: https://github.com/apache/libcloud/blob/trunk/LICENSE
-
-.. image:: https://bestpractices.coreinfrastructure.org/projects/152/badge
-        :target: https://bestpractices.coreinfrastructure.org/projects/152
 
 
 :Code:          https://github.com/apache/libcloud
@@ -54,6 +30,17 @@ Documentation
 =============
 
 Documentation can be found at <https://libcloud.readthedocs.org>.
+
+Custom Edits
+============
+
+This version of Apache Libcloud features the following modifications:
+
+* **[EC2]** create_node now supports the optional parameter "ex_monitoring" (bool), in order to
+  allow the user to launch an instance with the Advanced Monitoring enabled.
+* **[OpenStack]** create_node now supports the optional parameter ex_scheduler_hints (dict),
+  allowing the user to provide detailed informations to the OpenStack scheduler and using
+  the [OpenStack REST API](https://developer.openstack.org/api-ref/compute/?expanded=create-server-detail).
 
 Feedback
 ========

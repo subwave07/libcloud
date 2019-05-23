@@ -1231,8 +1231,8 @@ class OpenStackSecurityGroupRule(object):
     def __repr__(self):
         return ('<OpenStackSecurityGroupRule id=%s parent_group_id=%s \
                 ip_protocol=%s from_port=%s to_port=%s>' % (self.id,
-                self.parent_group_id, self.ip_protocol, self.from_port,
-                self.to_port))
+                                                            self.parent_group_id, self.ip_protocol, self.from_port,
+                                                            self.to_port))
 
 
 class OpenStackKeyPair(object):
@@ -1322,6 +1322,11 @@ class OpenStack_1_1_NodeDriver(OpenStackNodeDriver):
         :keyword    ex_metadata: Key/Value metadata to associate with a node
         :type       ex_metadata: ``dict``
 
+        :keyword    ex_scheduler_hints:  Key/Value metadata to provide to the
+                                         scheduler. For details, see
+                                         https://developer.openstack.org/api-ref/compute/?expanded=create-server-detail
+        :type       ex_scheduler_hints:  ``dict``
+
         :keyword    ex_files:   File Path => File contents to create on
                                 the node
         :type       ex_files:   ``dict``
@@ -1347,9 +1352,12 @@ class OpenStack_1_1_NodeDriver(OpenStackNodeDriver):
 
         server_params = self._create_args_to_params(None, **kwargs)
 
+        data = {'server': server_params}
+        data["OS-SCH-HNT:scheduler_hints"] = kwargs.get('ex_scheduler_hints', {})
+
         resp = self.connection.request("/servers",
                                        method='POST',
-                                       data={'server': server_params})
+                                       data=data)
 
         create_response = resp.object['server']
         server_resp = self.connection.request(
